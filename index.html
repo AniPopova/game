@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Quiz game</title>
+</head>
+
+<body class="body">
+    <header class="header">
+        <h1>Quiz game</h1>
+    </header>
+    <section>
+        <div class="flex-container">
+            <form id="userForm">
+                <label class="label" for="name">Name:</label>
+                <input type="text" id="name" aria-label="Your Name">
+
+                <label class="label" for="category">Select Category:</label>
+                <select id="category" aria-label="Select Quiz Category">
+                    <option value="9">General Knowledge</option>
+                    <option value="20">Mythology</option>
+                    <option value="27">Animals</option>
+                    <option value="26">Celebrities</option>
+                </select>
+
+                <label class="label" for="difficulty">Select Difficulty:</label>
+                <select id="difficulty" aria-label="Select Difficulty Level">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+
+                <label class="label" for="numQuestions">Number of Questions:</label>
+                <input class="label" type="number" id="numQuestions" min="1" max="10" value="5"
+                    aria-label="Number of Questions">
+
+                <a class="button" href="#" onclick="startQuiz()" aria-label="Start Quiz">Start Quiz</a>
+                <br>
+                <a class="button" href="#" onclick="loadPreferences()" aria-label="Load Preferences">Load</a>
+            </form>
+            <div class="catSection">
+                <h2>Smile section </h2>
+                <img id="catImage" alt="Random Cat Picture">
+                <a class="button" onclick="fetchRandomCatPicture();">Fetch Random Cat Picture</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="quizSection">
+        <div class="flex-container">
+            <p id="resultsParagraph"></p>
+        </div>
+    </section>
+    <section id="resultsSection">
+
+        <div class="flex-container">
+            <a id="resultsButton" class="button" onclick="displayResults();">Display Results</a>
+            <a class="button" onclick="startQuiz();">Start new quiz!</a>
+        </div>
+    </section>
+    <script src="scripts.js"></script>
+    <script src="cat.js"></script>
+</body>
+
+</html>
