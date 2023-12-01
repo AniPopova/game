@@ -181,13 +181,25 @@ function displayQuestions(questions) {
         quizSection.appendChild(card);
     });
 
+    const buttonContainer  = document.createElement('div');
+    buttonContainer.classList.add('flex-container');
     const startNewQuizButton = document.createElement('a');
     startNewQuizButton.classList.add('button');
     startNewQuizButton.textContent = 'Start New Quiz';
     startNewQuizButton.addEventListener('click', startNewQuiz);
-    quizSection.appendChild(startNewQuizButton);
+    // quizSection.appendChild(startNewQuizButton);
 
-    
+    const displayResultsButton = document.createElement('a');
+    displayResultsButton.id('resultsButton');
+    displayResultsButton.classList.add('button');
+    displayResultsButton.textContent = 'Display Results';
+    displayResultsButton.addEventListener('click', startNewQuiz);
+    // quizSection.appendChild(displayResultsButton);
+    buttonContainer.appendChild(startNewQuizButton);
+    buttonContainer.appendChild(displayResultsButton);
+
+    quizSection.appendChild(buttonContainer);
+
 }
 
 //specially to mix the answers 
@@ -201,7 +213,7 @@ function fetchRandomCat() {
     const url = 'https://api.thecatapi.com/v1/images/search';
    
     fetch(url)
-        .then(response => response.json())
+        .then(response => response.json()
         .then(data => {
             // Extract the cat picture URL from the response
             const catPictureUrl = data[0].url;
