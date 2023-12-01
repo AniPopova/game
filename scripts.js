@@ -168,30 +168,17 @@ function shuffle(array) {
 }
 
 
-// Second Api
+// Second Api - API Key = 'MTc3MTc4Mw';
 function fetchRandomCat() {
-    // Replace 'YOUR_SECOND_API_URL' with the actual URL of the second API
-    const apiUrl = 'https://api.thecatapi.com/v1/images/search';
-
-    // If the API requires an API key, replace 'YOUR_API_KEY' with the actual API key
-    const apiKey = 'MTc3MTc4Mw';
-
-    // Construct the request headers
-    const headers = new Headers();
-    if (apiKey) {
-        headers.append('x-api-key', apiKey);
-    }
-
-    // Fetch the cat picture
-    fetch(apiUrl, { headers: headers })
+    const url = 'https://api.thecatapi.com/v1/images/search';
+   
+    fetch(url)
         .then(response => response.json())
         .then(data => {
             // Extract the cat picture URL from the response
             const catPictureUrl = data[0].url;
-
-            // Display the cat picture
-            const catImage = document.getElementById('catImage');
-            catImage.src = catPictureUrl;
+            const image = document.getElementById('image');// Display the picture
+            image.src = catPictureUrl;
         })
         .catch(error => {
             console.error('Error fetching cat picture:', error);
