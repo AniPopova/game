@@ -1,6 +1,13 @@
 
 'use strict';
 
+import {
+    BlobWriter,
+    HttpReader,
+    TextReader,
+    ZipWriter,
+  } from "https://unpkg.com/@zip.js/zip.js/index.js";
+
 let correctAnswerCounter = 0;
 let incorrectAnswerCounter = 0;
 let questionsArray = []; // questions to be used globally
