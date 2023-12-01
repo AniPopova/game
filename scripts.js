@@ -43,13 +43,13 @@ function loadPreferencesAndResults() {
 // 
 function startQuiz() {
     const userForm = document.getElementById('userForm');
-    userForm.style.display = 'none';
+    userForm.classList.add('hidden');
 
     const quizSection = document.getElementById('quizSection');
     quizSection.innerHTML = '';
 
     const catSection = document.querySelector('.catSection');
-    catSection.style.display = 'none';
+    catSection.classList.add('hidden');
 
     let numberQuestions = document.getElementById('numQuestions').value;
     let difficulty = document.getElementById('difficulty').value;
@@ -86,15 +86,15 @@ function submitForm(event, questionIndex, correctAnswer) {
 // 
 
 function displayResults() {
-    const resultsSection = document.getElementById('resultsSection');
-    resultsSection.innerHTML = '';
+    const resultsAnswers = document.getElementById('resultsAnswers');
+    resultsAnswers.innerHTML = '';
 
     questionsArray.forEach((question, index) => {
         const userAnswer = localStorage.getItem(`userAnswer_q${index + 1}`);
         const isCorrect = userAnswer === question.correct_answer;
 
         const resultText = document.createElement('div');
-        resultText.classList.add('card');
+        resultText.classList.add('results');
         resultText.innerHTML = `
             <h2>Question ${index + 1}</h2>
             <p>${question.question}</p>
@@ -102,13 +102,14 @@ function displayResults() {
             <p>Correct Answer: ${question.correct_answer}</p>
             <p>Status: ${isCorrect ? 'Correct' : 'Incorrect'}</p>
         `;
-        resultsSection.appendChild(resultText);
+        resultsAnswers.appendChild(resultText);
     });
 
     const overallResultText = document.createElement('div');
     overallResultText.classList.add('card');
     overallResultText.textContent = `Overall Results: correct answers: ${correctAnswerCounter} and incorrect answers: ${incorrectAnswerCounter}`;
-    resultsSection.appendChild(overallResultText);
+    resultsAnswers.appendChild(overallResultText);
+
 }
 
 // Cat pictures
@@ -130,11 +131,11 @@ function fetchRandomCatPicture() {
 function startNewQuiz() {
     const userForm = document.getElementById('userForm');
     const quizSection = document.getElementById('quizSection');
-    const resultsSection = document.getElementById('resultsSection');
+    const catSection = document.querySelector('.catSection');
+    catSection.classList.remove('hidden');
 
-    userForm.style.display = '';
+    userForm.classList.add('hidden');
     quizSection.innerHTML = '';
-    resultsSection.innerHTML = '';
     correctAnswerCounter = 0;
     incorrectAnswerCounter = 0;
 }
@@ -178,6 +179,8 @@ function displayQuestions(questions) {
     startNewQuizButton.textContent = 'Start New Quiz';
     startNewQuizButton.addEventListener('click', startNewQuiz);
     quizSection.appendChild(startNewQuizButton);
+
+    
 }
 
 //specially to mix the answers 
