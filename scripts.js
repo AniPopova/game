@@ -48,6 +48,9 @@ function startQuiz() {
     const quizSection = document.getElementById('quizSection');
     quizSection.innerHTML = '';
 
+    const catSection = document.querySelector('.catSection');
+    catSection.style.display = 'none';
+
     let numberQuestions = document.getElementById('numQuestions').value;
     let difficulty = document.getElementById('difficulty').value;
     let category = document.getElementById('category').value;
@@ -107,6 +110,21 @@ function displayResults() {
     overallResultText.textContent = `Overall Results: correct answers: ${correctAnswerCounter} and incorrect answers: ${incorrectAnswerCounter}`;
     resultsSection.appendChild(overallResultText);
 }
+
+// Cat pictures
+function fetchRandomCatPicture() {
+    const url = 'https://api.thecatapi.com/v1/images/search';
+  
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const catImage = document.getElementById('catImage');
+            catImage.src = data[0].url;
+        })
+        .catch(error => {
+            console.error('Error fetching cat picture:', error);
+        });
+  }
 
 // 
 function startNewQuiz() {
