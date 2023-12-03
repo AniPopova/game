@@ -12,9 +12,10 @@
     <header class="header">
         <h1>Quiz game</h1>
     </header>
-    <section>
+    <section id="main-section">
         <div class="flex-container">
-            <form id="userForm">
+            <form id="userForm" onsubmit="startQuiz(); return false;">
+                <!-- onsubmit - ensures that function (startQuiz()) is invoked correctly when the form is submitted -->
                 <label class="label" for="name">Name:</label>
                 <input type="text" id="name" aria-label="Your Name">
 
@@ -38,37 +39,25 @@
                     aria-label="Number of Questions">
 
                 <a class="button" href="#" onclick="startQuiz()" aria-label="Start Quiz">Start Quiz</a>
-                <br>
-                <a class="button" href="#" onclick="loadPreferences()" aria-label="Load Preferences">Load</a>
             </form>
             <div class="catSection">
                 <h2>Smile, It is a wonderful day!❤</h2>
-                <img id="catImage" alt="Random Cat Picture">
+                <img id="catImage" alt="Random Cat Picture" />
                 <a class="button" onclick="fetchRandomCatPicture();">Click me!</a>
             </div>
         </div>
     </section>
 
     <section id="quizSection">
-        <div class="flex-container">
-            <p id="resultsParagraph"></p>
-        </div>
     </section>
+
     <section id="resultsSection">
-    <div id='resultsAnswers'>
 
-    </div>
-        <div class="flex-container">
-            <a id='resultsButton' class="button" onclick="displayResults();">Display Results</a>
+    </section>
 
-            <a class="button" onclick="startQuiz();">Start new quiz!</a>
-        </div>
-    </section>
-    <section id="catSection">
-        <a class="button" onclick="fetchRandomCatPicture();">Click me</a>
-    </section>
     <script src="scripts.js"></script>
-    <script src="fetchRandomCat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+
 </body>
 
 </html>
