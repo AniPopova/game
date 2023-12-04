@@ -12,15 +12,15 @@
     <header class="header">
         <h1>Quiz game</h1>
     </header>
-    <section id="main-section">
+    <section id="main-section" class="main-section">
         <div class="flex-container">
-            <form id="userForm" onsubmit="startQuiz(); return false;">
+            <form id="userForm" class="userForm" onsubmit="startQuiz(); return false;">
                 <!-- onsubmit - ensures that function (startQuiz()) is invoked correctly when the form is submitted -->
                 <label class="label" for="name">Name:</label>
                 <input type="text" id="name" aria-label="Your Name">
 
                 <label class="label" for="category">Select Category:</label>
-                <select id="category" aria-label="Select Quiz Category">
+                <select id="category" class="category" aria-label="Select Quiz Category">
                     <option value="9">General Knowledge</option>
                     <option value="20">Mythology</option>
                     <option value="27">Animals</option>
@@ -28,35 +28,34 @@
                 </select>
 
                 <label class="label" for="difficulty">Select Difficulty:</label>
-                <select id="difficulty" aria-label="Select Difficulty Level">
+                <select id="difficulty" class="difficulty" aria-label="Select Difficulty Level">
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option>
                     <option value="hard">Hard</option>
                 </select>
 
                 <label class="label" for="numQuestions">Number of Questions:</label>
-                <input class="label" type="number" id="numQuestions" min="1" max="10" value="5"
+                <input id="numQuestions" class="label" type="number"  min="1" max="10" value="5"
                     aria-label="Number of Questions">
 
                 <a class="button" href="#" onclick="startQuiz()" aria-label="Start Quiz">Start Quiz</a>
             </form>
             <div class="catSection">
                 <h2>Smile, It is a wonderful day!❤</h2>
-                <img id="catImage" alt="Random Cat Picture" />
+                <img id="catImage" class="image" alt="Random Cat Picture" />
                 <a class="button" onclick="fetchRandomCatPicture();">Click me!</a>
             </div>
         </div>
     </section>
 
-    <section id="quizSection">
+    <section id="quizSection" class="quizSection">
     </section>
 
-    <section id="resultsSection">
-
+    <section id="resultsSection" class="resultsSection">
     </section>
 
     <script src="scripts.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" defer></script>
 
 </body>
 

@@ -1,7 +1,11 @@
 "use strict";
 let correctAnswerCounter = 0;
 let incorrectAnswerCounter = 0;
-let questionsArray = []; // questions to be used globally
+let questionsArray = []; 
+let userName = document.getElementById('name');
+let questionsCategory = document.getElementById("category");
+let questionsDifficulty = document.getElementById("difficulty");
+let numberOfQuestions = document.getElementById("numQuestions");
 
 
 function loadPreferencesAndResults() {
@@ -11,10 +15,10 @@ function loadPreferencesAndResults() {
   if (preferences) {
     const { name, category, difficulty, numQuestions } =
       JSON.parse(preferences);
-    document.getElementById("name").value = name;
-    document.getElementById("category").value = category;
-    document.getElementById("difficulty").value = difficulty;
-    document.getElementById("numQuestions").value = numQuestions;
+    userName.value = name;
+    questionsCategory.value = category;
+    questionsDifficulty.value = difficulty;
+    numberOfQuestions.value = numQuestions;
   }
 
   if (results) {
@@ -27,10 +31,10 @@ function loadPreferencesAndResults() {
 // SAVE TO BROWSER LOCAL STORAGE
 function savePreferencesAndResults() {
   const preferences = {
-    name: document.getElementById("name").value,
-    category: document.getElementById("category").value,
-    difficulty: document.getElementById("difficulty").value,
-    numQuestions: document.getElementById("numQuestions").value,
+    name: userName.value,
+    category: questionsCategory.value,
+    difficulty: questionsDifficulty.value,
+    numQuestions: numberOfQuestions.value,
   };
 
   const results = {
@@ -45,7 +49,7 @@ function savePreferencesAndResults() {
 
 function startQuiz() {
   const userForm = document.getElementById("userForm");
-  userForm.style.display = "none";
+  userForm.classList.add('hidden');
 
   const quizSection = document.getElementById("quizSection");
   quizSection.innerHTML = "";
@@ -53,9 +57,9 @@ function startQuiz() {
   const catSection = document.querySelector(".catSection");
   catSection.classList.add("hidden");
 
-  let numberQuestions = document.getElementById("numQuestions").value;
-  let difficulty = document.getElementById("difficulty").value;
-  let category = document.getElementById("category").value;
+  let category = questionsCategory.value;
+  let difficulty = questionsDifficulty.value;
+  let numberQuestions = numberOfQuestions.value;
 
   fetch(
     `https://opentdb.com/api.php?amount=${numberQuestions}&category=${category}&difficulty=${difficulty}&type=multiple`
@@ -229,8 +233,6 @@ function displayResults() {
     // Create a download button
     const downloadContainer = document.createElement('div');
     downloadContainer.classList.add('flex-container');
-    
-    // Create a download button
     const downloadButton = document.createElement('a');
     downloadButton.classList.add('button');
     downloadButton.textContent = 'Download Quiz Data';
@@ -268,6 +270,7 @@ function downloadUserData() {
     };
 
 
+
     // Create a Blob containing the JSON data
     const blob = new Blob([JSON.stringify(userData)], { type: 'application/json' });
 
@@ -291,19 +294,3 @@ function downloadUserData() {
     });
 }
 
-// import {
-//     BlobWriter,
-//     HttpReader,
-//     TextReader,
-//     ZipWriter,
-//   } from "https://unpkg.com/@zip.js/zip.js/index.js";
-   
-//   onmessage = async (e) => {
-//     const { correctAnswerCounter, incorrectAnswerCounter, questions } = e.data;
-//     const resultPercentage = Math.round((correctAnswerCounter / questions) * 100);
-//     const text = `You answered ${correctAnswerCounter} questions correctly and ${incorrectAnswerCounter} questions incorrectly. Your result is ${resultPercentage}%`;
-//     const zipWriter = new ZipWriter(new BlobWriter("application/zip"));
-//     await zipWriter.add("QuizScore.txt", new TextReader(text))
-//     const blob = await zipWriter.close()
-//     postMessage(blob)
-//   };
