@@ -291,3 +291,19 @@ function downloadUserData() {
     });
 }
 
+// import {
+//     BlobWriter,
+//     HttpReader,
+//     TextReader,
+//     ZipWriter,
+//   } from "https://unpkg.com/@zip.js/zip.js/index.js";
+   
+//   onmessage = async (e) => {
+//     const { correctAnswerCounter, incorrectAnswerCounter, questions } = e.data;
+//     const resultPercentage = Math.round((correctAnswerCounter / questions) * 100);
+//     const text = `You answered ${correctAnswerCounter} questions correctly and ${incorrectAnswerCounter} questions incorrectly. Your result is ${resultPercentage}%`;
+//     const zipWriter = new ZipWriter(new BlobWriter("application/zip"));
+//     await zipWriter.add("QuizScore.txt", new TextReader(text))
+//     const blob = await zipWriter.close()
+//     postMessage(blob)
+//   };
