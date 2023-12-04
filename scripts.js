@@ -267,11 +267,9 @@ function downloadUserData() {
         },
     };
 
-    // Convert the data to a JSON string
-    const jsonData = JSON.stringify(userData);
 
     // Create a Blob containing the JSON data
-    const blob = new Blob([jsonData], { type: 'application/json' });
+    const blob = new Blob([JSON.stringify(userData)], { type: 'application/json' });
 
     // Create a zip file containing the JSON file
     const zip = new JSZip();
