@@ -232,15 +232,12 @@ function displayResults() {
     
     // Create a download button
     const downloadButton = document.createElement('a');
-    downloadButton.href = '#';  // You can set the actual download link if you have a specific file to download
     downloadButton.classList.add('button');
     downloadButton.textContent = 'Download Quiz Data';
     downloadButton.addEventListener('click', downloadUserData);
     
-    // Append the button to the container
-    downloadContainer.appendChild(downloadButton);
     
-    // Append the container to the resultsAnswers
+    downloadContainer.appendChild(downloadButton);
     resultsAnswers.appendChild(downloadContainer);
 }
 
