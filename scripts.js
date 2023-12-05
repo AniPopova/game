@@ -1,12 +1,17 @@
 "use strict";
+// GLOBAL VARIABLES
 let correctAnswerCounter = 0;
 let incorrectAnswerCounter = 0;
 let questionsArray = []; 
+
+// GLOBAL HTML ELEMENTS
 let userName = document.getElementById('name');
 let questionsCategory = document.getElementById("category");
 let questionsDifficulty = document.getElementById("difficulty");
 let numberOfQuestions = document.getElementById("numQuestions");
-
+let startQuizButton = document.getElementById('startButton');
+let shuffleCatsButton = document.getElementById('catButton');
+let userInputForm  = document.getElementById('userForm');
 
 function loadPreferencesAndResults() {
   const preferences = localStorage.getItem("quizPreferences");
@@ -111,7 +116,7 @@ function fetchRandomCatPicture() {
     });
 }
 
-// GENERATE QUESTION BASED ON USER CHOICE
+// GENERATE QUESTIONS BASED ON USER CHOICE
 function displayQuestions(questions) {
   const quizSection = document.getElementById("quizSection");
   quizSection.innerHTML = "";
@@ -294,3 +299,7 @@ function downloadUserData() {
     });
 }
 
+// EVENT LISTENERS
+userInputForm.addEventListener("submit", ()=>startQuiz(), false);
+startQuizButton.addEventListener("click", ()=>startQuiz()); //arrow function for testing
+shuffleCatsButton.addEventListener("click", ()=>fetchRandomCatPicture()); 

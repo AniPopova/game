@@ -14,7 +14,7 @@
     </header>
     <section id="main-section" class="main-section">
         <div class="flex-container">
-            <form id="userForm" class="userForm" onsubmit="startQuiz(); return false;">
+            <form id="userForm" class="userForm">
                 <!-- onsubmit - ensures that function (startQuiz()) is invoked correctly when the form is submitted -->
                 <label class="label" for="name">Name:</label>
                 <input type="text" id="name" aria-label="Your Name">
@@ -38,12 +38,12 @@
                 <input id="numQuestions" class="label" type="number"  min="1" max="10" value="5"
                     aria-label="Number of Questions">
 
-                <a class="button" href="#" onclick="startQuiz()" aria-label="Start Quiz">Start Quiz</a>
+                <a id="startButton" class="button" href="#" aria-label="Start Quiz">Start Quiz</a>
             </form>
             <div class="catSection">
                 <h2>Smile, It is a wonderful day!❤</h2>
                 <img id="catImage" class="image" alt="Random Cat Picture" />
-                <a class="button" onclick="fetchRandomCatPicture();">Click me!</a>
+                <a id="catButton" class="button" href="#" aria-label="Shuffle cat pictures button">Click me!</a>
             </div>
         </div>
     </section>
