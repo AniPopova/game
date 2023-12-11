@@ -303,3 +303,4 @@ function downloadUserData() {
 userInputForm.addEventListener("submit", ()=>startQuiz(), false);
 startQuizButton.addEventListener("click", ()=>startQuiz()); //arrow function for testing
 shuffleCatsButton.addEventListener("click", ()=>fetchRandomCatPicture()); 
+document.addEventListener("DOMContentLoaded", () => fetchRandomCatPicture());
